@@ -1,6 +1,7 @@
 <?php 
 
 
+
 /**
  * This is a dev info func
  * @param $name
@@ -47,7 +48,50 @@ function createOTP(){
 }
 
 
+/**
+ * Time Ago func
+ * @param $timestamp 
+ */
+function timeAgo($timestamp){
 
+    // get timestamp to time
+    $timestampNum = strtotime($timestamp);
+    $currentTime = time();
+
+    // find the time difference 
+    $timeDiff = $currentTime - $timestampNum;
+
+    // time ago unit 
+    $sec = $timeDiff;
+    $min = round($timeDiff / 60);
+    $hour = round($min / 60);
+    $day = round($hour / 24);
+    $weeks = round($day / 7);
+    $months = round($day / 30);
+    $years = round($months / 12);
+
+
+    if( $sec <= 10 ){
+        echo  "Just Now";
+    }else if( $sec > 10 && $sec < 60 ){
+        echo  "{$sec} second ago";
+    }else if( $min < 60 ){
+        echo  "{$min} minute ago";
+    }else if( $hour < 24 ){
+        echo  "{$hour} hours ago";
+    }else if( $day < 7 ){
+        echo  "{$day} day ago";
+    }else if( $weeks < 4 ){
+        echo  "{$weeks} weeks ago";
+    }else if( $months < 12 ){
+        echo  "{$months} month ago";
+    }else {
+        echo  "{$years} years ago";
+    }
+
+ 
+
+}
 
 
 
